@@ -11,3 +11,6 @@ before_script:
   - phantomjs --webdriver=4444 > /dev/null &
 script:
   - npm run test
+after_script:
+  # kill phantomjs that's running in the background
+  - ps -A | grep -i phantomj[s] | grep -oP '^([ ])*\K([0-9])+' | xargs kill -9
